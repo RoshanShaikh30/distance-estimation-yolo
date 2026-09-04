@@ -30,6 +30,12 @@ while True:
               FOCAL_LENGTH = 1288.16
               distance = (REAL_HEIGHT * FOCAL_LENGTH) / height_pixels
               print(f"Height: {height_pixels:.2f} px | Distance: {distance:.2f} cm")
+              cv2.putText(
+               annotated,
+               f"{distance:.1f} cm",
+               (int(x1), int(y1) - 10),
+               cv2.FONT_HERSHEY_SIMPLEX, 0.8,(0, 255, 0),2
+             )
 
     current_time = time.time()
     fps = 1 / (current_time - prev_time)
