@@ -31,7 +31,7 @@ while True:
               distance_history.append(distance)
               if len(distance_history) > 5:
                 distance_history.pop(0)
-                smoothed_distance = sum(distance_history) / len(distance_history)
+              smoothed_distance = sum(distance_history) / len(distance_history)
               print(f"Height: {height_pixels:.2f} px | Distance: {distance:.2f} cm")
               cv2.putText(
                annotated,
