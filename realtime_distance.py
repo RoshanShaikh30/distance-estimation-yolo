@@ -18,6 +18,12 @@ while True:
     results = model(frame)
 
     annotated = results[0].plot()
+    
+    for r in results:
+        for box in r.boxes:
+            x1, y1, x2, y2 = box.xyxy[0]
+            height_pixels = float(y2 - y1)
+            print(f"Height: {height_pixels:.2f} px")
 
     current_time = time.time()
     fps = 1 / (current_time - prev_time)
