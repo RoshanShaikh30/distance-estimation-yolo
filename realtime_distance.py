@@ -21,9 +21,15 @@ while True:
     
     for r in results:
         for box in r.boxes:
-            x1, y1, x2, y2 = box.xyxy[0]
-            height_pixels = float(y2 - y1)
-            print(f"Height: {height_pixels:.2f} px")
+            cls_id = int(box.cls[0])
+            class_name = model.names[cls_id]
+            if class_name == "bottle":
+              x1, y1, x2, y2 = box.xyxy[0]
+              height_pixels = float(y2 - y1)
+              REAL_HEIGHT = 11.43
+              FOCAL_LENGTH = 1288.16
+              distance = (REAL_HEIGHT * FOCAL_LENGTH) / height_pixels
+              print(f"Height: {height_pixels:.2f} px | Distance: {distance:.2f} cm")
 
     current_time = time.time()
     fps = 1 / (current_time - prev_time)
