@@ -3,10 +3,9 @@ import cv2
 import time
 
 model = YOLO("yolov8s.pt")
-
 cap = cv2.VideoCapture(0)
-
 prev_time = time.time()
+distance_history = []
 
 while True:
 
@@ -29,10 +28,14 @@ while True:
               REAL_HEIGHT = 11.43
               FOCAL_LENGTH = 1288.16
               distance = (REAL_HEIGHT * FOCAL_LENGTH) / height_pixels
+              distance_history.append(distance)
+              if len(distance_history) > 5:
+                distance_history.pop(0)
+                smoothed_distance = sum(distance_history) / len(distance_history)
               print(f"Height: {height_pixels:.2f} px | Distance: {distance:.2f} cm")
               cv2.putText(
                annotated,
-               f"{distance:.1f} cm",
+               f"{smoothed_distance:.1f} cm",
                (int(x1), int(y1) - 10),
                cv2.FONT_HERSHEY_SIMPLEX, 0.8,(0, 255, 0),2
              )
