@@ -1,3 +1,4 @@
+#this was again simple testing - with pepper spray as object only!
 from ultralytics import YOLO
 import cv2
 import time
