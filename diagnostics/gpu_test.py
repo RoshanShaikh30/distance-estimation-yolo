@@ -25,8 +25,20 @@ while True:
         break
 
     results = model(frame, device=0, verbose=False)
-
     annotated = results[0].plot()
+    current_time = time.time()
+    fps = 1 / (current_time - prev_time)
+    prev_time = current_time
+
+    cv2.putText(
+     annotated,
+     f"FPS: {int(fps)}",
+     (20, 40),
+     cv2.FONT_HERSHEY_SIMPLEX,
+     1,
+     (0, 255, 0),
+     2
+    )
 
     cv2.imshow("YOLO GPU Test", annotated)
 
