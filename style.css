@@ -1,0 +1,2772 @@
+/* ================================
+   VISIONSPHERE AI
+   GLOBAL VARIABLES
+================================ */
+
+:root {
+
+    --background: #e8e8e4;
+
+    --surface: rgba(255, 255, 255, 0.56);
+    --surface-strong: rgba(255, 255, 255, 0.78);
+
+    --text-primary: #181b20;
+    --text-secondary: #656a70;
+
+    --accent: #587487;
+    --accent-dark: #334f61;
+
+    --border: rgba(20, 25, 30, 0.11);
+
+    --max-width: 1280px;
+
+    --shadow:
+        0 25px 70px rgba(20, 28, 35, 0.13);
+
+    --radius-large: 28px;
+    --radius-medium: 18px;
+}
+
+
+/* ================================
+   RESET
+================================ */
+
+* {
+
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+
+}
+
+
+html {
+
+    scroll-behavior: smooth;
+
+}
+
+
+body {
+
+    font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    background: var(--background);
+
+    color: var(--text-primary);
+
+    overflow-x: hidden;
+
+}
+
+
+/* ================================
+   LANDING PAGE BACKGROUND
+================================ */
+
+.landing-page {
+
+    min-height: 100vh;
+
+    position: relative;
+
+    isolation: isolate;
+
+}
+
+
+.landing-page::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+        url("../assets/visionsphere-bg.png");
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+
+    z-index: -2;
+
+}
+
+
+.landing-page::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            rgba(232, 232, 228, 0.97) 0%,
+            rgba(232, 232, 228, 0.88) 36%,
+            rgba(232, 232, 228, 0.46) 63%,
+            rgba(232, 232, 228, 0.08) 100%
+        );
+
+    z-index: -1;
+
+}
+
+
+/* ================================
+   NAVIGATION
+================================ */
+
+.navbar {
+
+    width:
+        min(
+            calc(100% - 64px),
+            var(--max-width)
+        );
+
+    margin: auto;
+
+    padding: 28px 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+}
+
+
+.brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    text-decoration: none;
+
+    color: var(--text-primary);
+
+}
+
+
+.brand-icon {
+
+    width: 36px;
+    height: 36px;
+
+    border-radius: 50%;
+
+    display: grid;
+
+    place-items: center;
+
+    background: var(--text-primary);
+
+}
+
+
+.brand-icon span {
+
+    width: 12px;
+    height: 12px;
+
+    border-radius: 50%;
+
+    border: 2px solid white;
+
+}
+
+
+.brand-name {
+
+    font-size: 1rem;
+
+    font-weight: 700;
+
+    letter-spacing: -0.04em;
+
+}
+
+
+.navigation {
+
+    display: flex;
+
+    gap: 32px;
+
+}
+
+
+.navigation a {
+
+    text-decoration: none;
+
+    color: var(--text-secondary);
+
+    font-size: 0.88rem;
+
+    transition: color 0.2s ease;
+
+}
+
+
+.navigation a:hover {
+
+    color: var(--text-primary);
+
+}
+
+
+.scan-nav-button {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 11px 17px;
+
+    border-radius: 999px;
+
+    background: var(--text-primary);
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 0.85rem;
+
+    font-weight: 600;
+
+    transition: transform 0.2s ease;
+
+}
+
+
+.scan-nav-button:hover {
+
+    transform: translateY(-2px);
+
+}
+
+
+/* ================================
+   HERO
+================================ */
+
+.hero {
+
+    width:
+        min(
+            calc(100% - 64px),
+            var(--max-width)
+        );
+
+    min-height:
+        calc(100vh - 92px);
+
+    margin: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    position: relative;
+
+}
+
+
+.hero-content {
+
+    max-width: 680px;
+
+    padding-bottom: 50px;
+
+}
+
+
+.system-status {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 24px;
+
+    color: var(--text-secondary);
+
+    font-size: 0.7rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.14em;
+
+}
+
+
+.status-indicator {
+
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #638071;
+
+    box-shadow:
+        0 0 0 5px
+        rgba(99, 128, 113, 0.12);
+
+}
+
+
+.hero h1 {
+
+    max-width: 700px;
+
+    font-size:
+        clamp(
+            3.5rem,
+            7vw,
+            7rem
+        );
+
+    line-height: 0.92;
+
+    letter-spacing: -0.075em;
+
+    margin-bottom: 30px;
+
+}
+
+
+.hero h1 span {
+
+    display: block;
+
+    color: var(--accent-dark);
+
+}
+
+
+.hero-description {
+
+    max-width: 570px;
+
+    color: var(--text-secondary);
+
+    font-size: 1.05rem;
+
+    line-height: 1.75;
+
+    margin-bottom: 36px;
+
+}
+
+
+/* ================================
+   ACTIONS
+================================ */
+
+.hero-actions {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 14px;
+
+}
+
+
+.primary-action,
+.secondary-action {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 16px;
+
+    padding: 15px 22px;
+
+    border-radius: 999px;
+
+    text-decoration: none;
+
+    font-size: 0.9rem;
+
+    font-weight: 600;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+
+}
+
+
+.primary-action {
+
+    background: var(--text-primary);
+
+    color: white;
+
+    box-shadow:
+        0 14px 30px
+        rgba(20, 25, 30, 0.18);
+
+}
+
+
+.primary-action:hover,
+.secondary-action:hover {
+
+    transform: translateY(-3px);
+
+}
+
+
+.arrow {
+
+    font-size: 1.2rem;
+
+}
+
+
+.secondary-action {
+
+    color: var(--text-primary);
+
+    border:
+        1px solid var(--border);
+
+    background:
+        rgba(255, 255, 255, 0.38);
+
+    backdrop-filter:
+        blur(10px);
+
+}
+
+
+/* ================================
+   SYSTEM POINTS
+================================ */
+
+.system-points {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 22px;
+
+    margin-top: 55px;
+
+}
+
+
+.system-points div {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    font-size: 0.75rem;
+
+    color: var(--text-secondary);
+
+}
+
+
+.point-number {
+
+    color: var(--accent-dark);
+
+    font-weight: 700;
+
+}
+
+
+/* ================================
+   ANALYSIS CARD
+================================ */
+
+.analysis-card {
+
+    position: absolute;
+
+    right: 0;
+
+    bottom: 60px;
+
+    width: 350px;
+
+    padding: 24px;
+
+    border-radius: var(--radius-large);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.7);
+
+    background:
+        rgba(255, 255, 255, 0.42);
+
+    backdrop-filter:
+        blur(20px);
+
+    box-shadow:
+        var(--shadow);
+
+}
+
+
+.analysis-card-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+}
+
+
+.card-label {
+
+    display: block;
+
+    font-size: 0.62rem;
+
+    letter-spacing: 0.14em;
+
+    color: var(--text-secondary);
+
+}
+
+
+.analysis-card h2 {
+
+    margin-top: 6px;
+
+    font-size: 1.25rem;
+
+    letter-spacing: -0.04em;
+
+}
+
+
+.live-status {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    font-size: 0.62rem;
+
+    font-weight: 700;
+
+    color: #476555;
+
+}
+
+
+.live-status span {
+
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #638071;
+
+}
+
+
+.scan-line {
+
+    height: 1px;
+
+    margin: 22px 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--accent),
+            transparent
+        );
+
+}
+
+
+.analysis-feature {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 14px;
+
+    border-radius: var(--radius-medium);
+
+    background:
+        rgba(255, 255, 255, 0.5);
+
+}
+
+
+.feature-symbol {
+
+    width: 42px;
+    height: 42px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 13px;
+
+    background:
+        rgba(88, 116, 135, 0.13);
+
+    color: var(--accent-dark);
+
+}
+
+
+.analysis-feature span {
+
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: var(--text-secondary);
+
+    font-size: 0.7rem;
+
+}
+
+
+.analysis-feature strong {
+
+    font-size: 0.82rem;
+
+}
+
+
+.analysis-data {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 10px;
+
+    margin-top: 14px;
+
+}
+
+
+.data-item {
+
+    padding: 14px;
+
+    border-radius: 15px;
+
+    background:
+        rgba(255, 255, 255, 0.4);
+
+}
+
+
+.data-item span {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-size: 0.6rem;
+
+    letter-spacing: 0.08em;
+
+    color: var(--text-secondary);
+
+}
+
+
+.data-item strong {
+
+    font-size: 0.78rem;
+
+}
+
+
+/* ================================
+   CAPABILITIES
+================================ */
+
+.capabilities {
+
+    padding: 140px 32px;
+
+    background: #f4f3ef;
+
+}
+
+
+.section-intro {
+
+    max-width: 700px;
+
+    margin: 0 auto 65px;
+
+    text-align: center;
+
+}
+
+
+.section-eyebrow {
+
+    display: inline-block;
+
+    margin-bottom: 16px;
+
+    font-size: 0.68rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.14em;
+
+    color: var(--accent-dark);
+
+}
+
+
+.section-intro h2,
+.technology h2 {
+
+    font-size:
+        clamp(
+            2.5rem,
+            5vw,
+            5rem
+        );
+
+    line-height: 0.98;
+
+    letter-spacing: -0.065em;
+
+    margin-bottom: 22px;
+
+}
+
+
+.section-intro p {
+
+    color: var(--text-secondary);
+
+    line-height: 1.7;
+
+}
+
+
+.capability-grid {
+
+    max-width: var(--max-width);
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 16px;
+
+}
+
+
+.capability-card {
+
+    min-height: 300px;
+
+    padding: 26px;
+
+    position: relative;
+
+    border-radius: var(--radius-large);
+
+    border:
+        1px solid var(--border);
+
+    background:
+        rgba(255, 255, 255, 0.58);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+
+}
+
+
+.capability-card:hover {
+
+    transform: translateY(-7px);
+
+    box-shadow: var(--shadow);
+
+}
+
+
+.card-index {
+
+    position: absolute;
+
+    top: 24px;
+    right: 24px;
+
+    font-size: 0.7rem;
+
+    color: var(--accent);
+
+}
+
+
+.capability-icon {
+
+    width: 50px;
+    height: 50px;
+
+    display: grid;
+
+    place-items: center;
+
+    margin: 60px 0 28px;
+
+    font-size: 1.3rem;
+
+    border-radius: 16px;
+
+    background:
+        rgba(88, 116, 135, 0.1);
+
+    color: var(--accent-dark);
+
+}
+
+
+.capability-card h3 {
+
+    margin-bottom: 12px;
+
+    font-size: 1.08rem;
+
+}
+
+
+.capability-card p {
+
+    color: var(--text-secondary);
+
+    font-size: 0.88rem;
+
+    line-height: 1.65;
+
+}
+
+
+/* ================================
+   TECHNOLOGY
+================================ */
+
+.technology {
+
+    max-width: var(--max-width);
+
+    margin: auto;
+
+    padding: 140px 32px;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 100px;
+
+}
+
+
+.technology-content p {
+
+    max-width: 520px;
+
+    color: var(--text-secondary);
+
+    line-height: 1.75;
+
+}
+
+
+.pipeline {
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+}
+
+
+.pipeline div {
+
+    display: grid;
+
+    grid-template-columns:
+        55px 1fr;
+
+    gap: 5px 18px;
+
+    padding: 18px 0;
+
+    border-bottom:
+        1px solid var(--border);
+
+}
+
+
+.pipeline span {
+
+    grid-row: span 2;
+
+    color: var(--accent);
+
+    font-size: 0.8rem;
+
+    font-weight: 700;
+
+}
+
+
+.pipeline strong {
+
+    font-size: 1rem;
+
+}
+
+
+.pipeline p {
+
+    color: var(--text-secondary);
+
+    font-size: 0.82rem;
+
+}
+
+
+/* ================================
+   FOOTER
+================================ */
+
+footer {
+
+    width:
+        min(
+            calc(100% - 64px),
+            var(--max-width)
+        );
+
+    margin: auto;
+
+    padding: 30px 0;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    border-top:
+        1px solid var(--border);
+
+    color: var(--text-secondary);
+
+    font-size: 0.75rem;
+
+}
+
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 1050px) {
+
+    .analysis-card {
+
+        display: none;
+
+    }
+
+
+    .capability-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+
+    .technology {
+
+        grid-template-columns: 1fr;
+
+        gap: 55px;
+
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .navbar,
+    .hero,
+    footer {
+
+        width:
+            calc(100% - 36px);
+
+    }
+
+
+    .navigation {
+
+        display: none;
+
+    }
+
+
+    .hero {
+
+        min-height:
+            calc(100vh - 92px);
+
+    }
+
+
+    .hero h1 {
+
+        font-size:
+            clamp(
+                3.2rem,
+                15vw,
+                5.5rem
+            );
+
+    }
+
+
+    .capabilities {
+
+        padding:
+            100px 18px;
+
+    }
+
+
+    .capability-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .technology {
+
+        padding:
+            100px 18px;
+
+    }
+
+
+    footer {
+
+        flex-direction: column;
+
+        gap: 10px;
+
+    }
+
+}
+/* =========================================
+   VISIONSPHERE AI - SCANNER PAGE
+   Lavender / Muted Purple Theme
+========================================= */
+
+
+/* =========================================
+   PAGE BACKGROUND
+========================================= */
+
+.scanner-body {
+
+    min-height: 100vh;
+
+    background:
+
+        radial-gradient(
+            circle at 85% 8%,
+            rgba(177, 156, 216, 0.42),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 8% 88%,
+            rgba(145, 132, 190, 0.25),
+            transparent 35%
+        ),
+
+        radial-gradient(
+            circle at 52% 42%,
+            rgba(211, 196, 235, 0.32),
+            transparent 42%
+        ),
+
+        linear-gradient(
+            135deg,
+            #f3eff8 0%,
+            #ebe6f2 38%,
+            #e1dceb 70%,
+            #d7d5e5 100%
+        );
+
+    background-attachment: fixed;
+
+    color: var(--text-primary);
+
+}
+
+
+.scanner-page {
+
+    min-height: 100vh;
+
+    padding-bottom: 70px;
+
+}
+
+
+/* =========================================
+   SCANNER NAVIGATION
+========================================= */
+
+.scanner-navbar {
+
+    width:
+        min(
+            calc(100% - 64px),
+            var(--max-width)
+        );
+
+    margin: auto;
+
+    padding: 28px 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+}
+
+
+.scanner-nav-center {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    color: var(--text-secondary);
+
+    font-size: 0.68rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.13em;
+
+}
+
+
+.scanner-mode-dot {
+
+    width: 7px;
+
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #8d7aaa;
+
+    box-shadow:
+
+        0 0 0 5px
+        rgba(141, 122, 170, 0.12);
+
+}
+
+
+.back-home {
+
+    text-decoration: none;
+
+    color: var(--text-secondary);
+
+    font-size: 0.85rem;
+
+    font-weight: 500;
+
+    transition:
+
+        color 0.2s ease,
+        transform 0.2s ease;
+
+}
+
+
+.back-home:hover {
+
+    color: var(--text-primary);
+
+    transform:
+
+        translateX(-2px);
+
+}
+
+
+/* =========================================
+   MAIN SCANNER WORKSPACE
+========================================= */
+
+.scanner-workspace {
+
+    width:
+        min(
+            calc(100% - 64px),
+            1180px
+        );
+
+    margin:
+
+        35px auto
+        0;
+
+}
+
+
+/* =========================================
+   HEADING
+========================================= */
+
+.scanner-heading {
+
+    max-width: 650px;
+
+    margin-bottom: 45px;
+
+}
+
+
+.scanner-heading .section-eyebrow {
+
+    color: #77618f;
+
+}
+
+
+.scanner-heading h1 {
+
+    margin-bottom: 20px;
+
+    font-size:
+
+        clamp(
+            3rem,
+            6vw,
+            5.5rem
+        );
+
+    line-height: 0.94;
+
+    letter-spacing: -0.07em;
+
+    color: #2c2637;
+
+}
+
+
+.scanner-heading h1 span {
+
+    display: block;
+
+    color: #75608d;
+
+}
+
+
+.scanner-heading p {
+
+    max-width: 560px;
+
+    color: var(--text-secondary);
+
+    font-size: 1rem;
+
+    line-height: 1.75;
+
+}
+
+
+/* =========================================
+   MAIN GLASS SCANNER PANEL
+========================================= */
+
+.scan-panel {
+
+    padding: 20px;
+
+    border-radius: 32px;
+
+    border:
+
+        1px solid
+        rgba(255, 255, 255, 0.72);
+
+    background:
+
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.50),
+            rgba(235, 226, 247, 0.34)
+        );
+
+    backdrop-filter:
+
+        blur(22px);
+
+    -webkit-backdrop-filter:
+
+        blur(22px);
+
+    box-shadow:
+
+        0 30px 90px
+        rgba(87, 67, 120, 0.14);
+
+}
+
+
+/* =========================================
+   SCAN PREVIEW AREA
+========================================= */
+
+.scan-preview {
+
+    position: relative;
+
+    width: 100%;
+
+    min-height: 520px;
+
+    overflow: hidden;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 24px;
+
+    background:
+
+        radial-gradient(
+            circle at 50% 30%,
+            rgba(154, 125, 205, 0.28),
+            transparent 42%
+        ),
+
+        radial-gradient(
+            circle at 15% 85%,
+            rgba(91, 73, 128, 0.20),
+            transparent 35%
+        ),
+
+        linear-gradient(
+            135deg,
+            #292431 0%,
+            #373043 48%,
+            #474054 100%
+        );
+
+}
+
+
+/* =========================================
+   BACKGROUND GRID
+========================================= */
+
+.preview-grid {
+
+    position: absolute;
+
+    inset: 0;
+
+    opacity: 0.16;
+
+    pointer-events: none;
+
+    background-image:
+
+        linear-gradient(
+            rgba(230, 220, 255, 0.28) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(230, 220, 255, 0.28) 1px,
+            transparent 1px
+        );
+
+    background-size:
+
+        48px 48px;
+
+}
+
+
+/* =========================================
+   SCANNER CORNERS
+========================================= */
+
+.scanner-corners {
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 4;
+
+}
+
+
+.scanner-corners span {
+
+    position: absolute;
+
+    width: 44px;
+
+    height: 44px;
+
+    border-color:
+
+        rgba(224, 211, 255, 0.78);
+
+}
+
+
+.scanner-corners span:nth-child(1) {
+
+    top: 28px;
+
+    left: 28px;
+
+    border-top: 2px solid;
+
+    border-left: 2px solid;
+
+}
+
+
+.scanner-corners span:nth-child(2) {
+
+    top: 28px;
+
+    right: 28px;
+
+    border-top: 2px solid;
+
+    border-right: 2px solid;
+
+}
+
+
+.scanner-corners span:nth-child(3) {
+
+    bottom: 28px;
+
+    left: 28px;
+
+    border-bottom: 2px solid;
+
+    border-left: 2px solid;
+
+}
+
+
+.scanner-corners span:nth-child(4) {
+
+    bottom: 28px;
+
+    right: 28px;
+
+    border-bottom: 2px solid;
+
+    border-right: 2px solid;
+
+}
+
+
+/* =========================================
+   EMPTY SCANNER STATE
+========================================= */
+
+.scan-placeholder {
+
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 420px;
+
+    text-align: center;
+
+    color: white;
+
+}
+
+
+.scan-placeholder h2 {
+
+    margin-bottom: 12px;
+
+    font-size: 1.7rem;
+
+    letter-spacing: -0.045em;
+
+}
+
+
+.scan-placeholder p {
+
+    color:
+
+        rgba(238, 231, 255, 0.68);
+
+    font-size: 0.92rem;
+
+    line-height: 1.7;
+
+}
+
+
+/* =========================================
+   SCANNER ICON
+========================================= */
+
+.scan-icon {
+
+    width: 84px;
+
+    height: 84px;
+
+    margin:
+
+        0 auto
+        24px;
+
+    border-radius: 50%;
+
+    display: grid;
+
+    place-items: center;
+
+    border:
+
+        1px solid
+        rgba(226, 213, 255, 0.28);
+
+    background:
+
+        rgba(206, 186, 242, 0.10);
+
+    box-shadow:
+
+        0 0 50px
+        rgba(167, 133, 220, 0.12);
+
+}
+
+
+.scan-icon-inner {
+
+    width: 34px;
+
+    height: 34px;
+
+    border-radius: 50%;
+
+    border:
+
+        1px solid
+        rgba(235, 225, 255, 0.78);
+
+    box-shadow:
+
+        0 0 0 10px
+        rgba(218, 199, 250, 0.06);
+
+}
+
+
+/* =========================================
+   UPLOADED IMAGE
+========================================= */
+
+#previewImage {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: contain;
+
+    z-index: 3;
+
+}
+
+
+/* =========================================
+   CAMERA FEED
+========================================= */
+
+#cameraFeed {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    z-index: 3;
+
+}
+
+
+/* =========================================
+   SCAN OVERLAY
+========================================= */
+
+.scan-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 10;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    overflow: hidden;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            rgba(40, 33, 52, 0.40),
+            rgba(78, 62, 104, 0.30)
+        );
+
+}
+
+
+.scan-overlay span {
+
+    position: relative;
+
+    z-index: 2;
+
+    padding: 11px 18px;
+
+    border-radius: 999px;
+
+    border:
+
+        1px solid
+        rgba(231, 217, 255, 0.22);
+
+    background:
+
+        rgba(255, 255, 255, 0.10);
+
+    color: white;
+
+    font-size: 0.68rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.14em;
+
+    backdrop-filter:
+
+        blur(10px);
+
+}
+
+
+/* =========================================
+   ANIMATED SCANNING LINE
+========================================= */
+
+.scanning-line {
+
+    position: absolute;
+
+    left: 0;
+
+    right: 0;
+
+    top: 0;
+
+    height: 3px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            transparent,
+            #e0d0ff,
+            #b795ee,
+            #e0d0ff,
+            transparent
+        );
+
+    box-shadow:
+
+        0 0 35px
+        rgba(183, 148, 237, 0.95);
+
+    animation:
+
+        scanMove
+        2s linear
+        infinite;
+
+}
+
+
+@keyframes scanMove {
+
+    from {
+
+        transform:
+
+            translateY(0);
+
+    }
+
+
+    to {
+
+        transform:
+
+            translateY(520px);
+
+    }
+
+}
+
+
+/* =========================================
+   SCANNER CONTROLS
+========================================= */
+
+.scan-controls {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    padding:
+
+        20px 0
+        12px;
+
+}
+
+
+.control-button,
+.analyse-button {
+
+    border: none;
+
+    cursor: pointer;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    min-height: 52px;
+
+    padding:
+
+        0 24px;
+
+    border-radius: 999px;
+
+    font-family: inherit;
+
+    font-size: 0.88rem;
+
+    font-weight: 600;
+
+    transition:
+
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease;
+
+}
+
+
+.control-button:hover,
+.analyse-button:hover:not(:disabled) {
+
+    transform:
+
+        translateY(-3px);
+
+}
+
+
+/* =========================================
+   SECONDARY CONTROLS
+========================================= */
+
+.secondary-control {
+
+    color: #332b40;
+
+    border:
+
+        1px solid
+        rgba(95, 74, 126, 0.14);
+
+    background:
+
+        rgba(255, 255, 255, 0.62);
+
+    box-shadow:
+
+        0 8px 25px
+        rgba(90, 68, 122, 0.06);
+
+}
+
+
+.secondary-control:hover {
+
+    box-shadow:
+
+        0 14px 30px
+        rgba(90, 68, 122, 0.12);
+
+}
+
+
+.control-icon {
+
+    font-size: 1.1rem;
+
+    color: #80669e;
+
+}
+
+
+/* =========================================
+   ANALYSE BUTTON
+========================================= */
+
+.analyse-button {
+
+    min-width: 195px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #5f4b79,
+            #7c6398
+        );
+
+    color: white;
+
+    box-shadow:
+
+        0 12px 30px
+        rgba(92, 70, 125, 0.28);
+
+}
+
+
+.analyse-button:hover:not(:disabled) {
+
+    box-shadow:
+
+        0 18px 40px
+        rgba(92, 70, 125, 0.36);
+
+}
+
+
+.analyse-button:disabled {
+
+    opacity: 0.45;
+
+    cursor: not-allowed;
+
+    box-shadow: none;
+
+}
+
+
+/* =========================================
+   SCANNER STATUS
+========================================= */
+
+.scan-status {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 9px;
+
+    padding-top: 10px;
+
+    color: var(--text-secondary);
+
+    font-size: 0.76rem;
+
+}
+
+
+.status-pulse {
+
+    width: 7px;
+
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #9579b5;
+
+    box-shadow:
+
+        0 0 0 5px
+        rgba(149, 121, 181, 0.12);
+
+}
+
+
+/* =========================================
+   SYSTEM INFORMATION ROW
+========================================= */
+
+.scanner-info {
+
+    display: grid;
+
+    grid-template-columns:
+
+        repeat(4, 1fr);
+
+    gap: 14px;
+
+    margin-top: 20px;
+
+}
+
+
+.scanner-info div {
+
+    padding: 19px;
+
+    border-radius: 18px;
+
+    border:
+
+        1px solid
+        rgba(255, 255, 255, 0.62);
+
+    background:
+
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.40),
+            rgba(230, 220, 244, 0.25)
+        );
+
+    backdrop-filter:
+
+        blur(12px);
+
+    -webkit-backdrop-filter:
+
+        blur(12px);
+
+    transition:
+
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+
+}
+
+
+.scanner-info div:hover {
+
+    transform:
+
+        translateY(-3px);
+
+    box-shadow:
+
+        0 15px 35px
+        rgba(87, 67, 120, 0.09);
+
+}
+
+
+.scanner-info span {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #83778f;
+
+    font-size: 0.62rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.1em;
+
+}
+
+
+.scanner-info strong {
+
+    color: #393143;
+
+    font-size: 0.8rem;
+
+}
+
+
+/* =========================================
+   RESPONSIVE DESIGN
+========================================= */
+
+@media (max-width: 900px) {
+
+    .scanner-navbar,
+    .scanner-workspace {
+
+        width:
+
+            calc(100% - 44px);
+
+    }
+
+
+    .scanner-info {
+
+        grid-template-columns:
+
+            repeat(2, 1fr);
+
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .scanner-navbar {
+
+        padding:
+
+            22px 0;
+
+    }
+
+
+    .scanner-nav-center {
+
+        display: none;
+
+    }
+
+
+    .scanner-workspace {
+
+        margin-top: 20px;
+
+    }
+
+
+    .scanner-heading {
+
+        margin-bottom: 32px;
+
+    }
+
+
+    .scanner-heading h1 {
+
+        font-size:
+
+            clamp(
+                3rem,
+                14vw,
+                4.5rem
+            );
+
+    }
+
+
+    .scan-preview {
+
+        min-height: 420px;
+
+    }
+
+
+    .scan-panel {
+
+        padding: 12px;
+
+        border-radius: 24px;
+
+    }
+
+
+    @keyframes scanMove {
+
+        from {
+
+            transform:
+
+                translateY(0);
+
+        }
+
+
+        to {
+
+            transform:
+
+                translateY(420px);
+
+        }
+
+    }
+
+}
+
+
+@media (max-width: 520px) {
+
+    .scanner-navbar,
+    .scanner-workspace {
+
+        width:
+
+            calc(100% - 32px);
+
+    }
+
+
+    .back-home {
+
+        font-size: 0.75rem;
+
+    }
+
+
+    .scan-preview {
+
+        min-height: 350px;
+
+    }
+
+
+    .scan-placeholder {
+
+        padding:
+
+            0 28px;
+
+    }
+
+
+    .scan-placeholder h2 {
+
+        font-size: 1.4rem;
+
+    }
+
+
+    .scan-placeholder p {
+
+        font-size: 0.82rem;
+
+    }
+
+
+    .scanner-corners span {
+
+        width: 32px;
+
+        height: 32px;
+
+    }
+
+
+    .scanner-corners span:nth-child(1) {
+
+        top: 18px;
+
+        left: 18px;
+
+    }
+
+
+    .scanner-corners span:nth-child(2) {
+
+        top: 18px;
+
+        right: 18px;
+
+    }
+
+
+    .scanner-corners span:nth-child(3) {
+
+        bottom: 18px;
+
+        left: 18px;
+
+    }
+
+
+    .scanner-corners span:nth-child(4) {
+
+        bottom: 18px;
+
+        right: 18px;
+
+    }
+
+
+    .scan-controls {
+
+        flex-direction: column;
+
+    }
+
+
+    .control-button,
+    .analyse-button {
+
+        width: 100%;
+
+    }
+
+
+    .scanner-info {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    @keyframes scanMove {
+
+        from {
+
+            transform:
+
+                translateY(0);
+
+        }
+
+
+        to {
+
+            transform:
+
+                translateY(350px);
+
+        }
+
+    }
+
+}
+/* =========================================
+   VISIONSPHERE RESULTS PAGE
+========================================= */
+
+.details-body {
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 85% 8%,
+            rgba(177, 156, 216, 0.35),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 8% 88%,
+            rgba(145, 132, 190, 0.20),
+            transparent 35%
+        ),
+
+        linear-gradient(
+            135deg,
+            #f3eff8 0%,
+            #ebe6f2 45%,
+            #e1dceb 100%
+        );
+}
+
+
+.details-page {
+    min-height: 100vh;
+    padding-bottom: 80px;
+}
+
+
+.details-navbar {
+    width: min(
+        calc(100% - 64px),
+        var(--max-width)
+    );
+
+    margin: auto;
+
+    padding: 28px 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+
+.details-workspace {
+    width: min(
+        calc(100% - 64px),
+        1180px
+    );
+
+    margin: 50px auto 0;
+}
+
+
+.details-heading {
+    margin-bottom: 40px;
+}
+
+
+.details-heading h1 {
+    font-size: clamp(
+        3rem,
+        7vw,
+        5.5rem
+    );
+
+    line-height: 0.95;
+
+    letter-spacing: -0.06em;
+
+    margin: 12px 0 20px;
+}
+
+
+.details-heading h1 span {
+    color: var(--accent);
+}
+
+
+.details-heading p {
+    color: var(--text-secondary);
+
+    font-size: 1rem;
+}
+
+
+/* RESULT PANEL */
+
+.result-panel {
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-large);
+
+    padding: 30px;
+
+    box-shadow: var(--shadow);
+
+    backdrop-filter: blur(18px);
+
+    margin-bottom: 60px;
+}
+
+
+.result-panel-header {
+    margin-bottom: 25px;
+}
+
+
+.result-panel-header h2 {
+    margin-top: 8px;
+
+    font-size: 1.8rem;
+
+    letter-spacing: -0.03em;
+}
+
+
+.result-image-container {
+    width: 100%;
+
+    min-height: 250px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    overflow: hidden;
+
+    border-radius: var(--radius-medium);
+
+    background: rgba(255, 255, 255, 0.3);
+}
+
+
+.result-image-container img {
+    display: block;
+
+    width: 100%;
+
+    max-width: 900px;
+
+    height: auto;
+
+    border-radius: var(--radius-medium);
+}
+
+
+/* DETECTIONS */
+
+.detections-section {
+    margin-top: 50px;
+}
+
+
+.section-heading {
+    margin-bottom: 25px;
+}
+
+
+.section-heading h2 {
+    font-size: 2.2rem;
+
+    margin-top: 8px;
+
+    letter-spacing: -0.04em;
+}
+
+
+.detections-container {
+    display: grid;
+
+    gap: 18px;
+}
+
+
+.detection-card {
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-medium);
+
+    padding: 25px;
+
+    box-shadow: 0 15px 40px rgba(
+        20,
+        28,
+        35,
+        0.08
+    );
+
+    backdrop-filter: blur(16px);
+}
+
+
+.detection-card-header {
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+
+    margin-bottom: 25px;
+}
+
+
+.detection-number {
+    display: grid;
+
+    place-items: center;
+
+    width: 44px;
+
+    height: 44px;
+
+    border-radius: 50%;
+
+    background: var(--text-primary);
+
+    color: white;
+
+    font-size: 0.75rem;
+
+    font-weight: 700;
+}
+
+
+.detection-label {
+    display: block;
+
+    color: var(--text-secondary);
+
+    font-size: 0.65rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.12em;
+}
+
+
+.detection-card h2 {
+    margin-top: 4px;
+
+    font-size: 1.5rem;
+
+    letter-spacing: -0.03em;
+}
+
+
+.detection-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(170px, 1fr)
+        );
+
+    gap: 12px;
+}
+
+
+.detection-data {
+    padding: 16px;
+
+    border-radius: 14px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        0.35
+    );
+
+    border: 1px solid var(--border);
+}
+
+
+.detection-data span {
+    display: block;
+
+    color: var(--text-secondary);
+
+    font-size: 0.62rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.1em;
+
+    margin-bottom: 7px;
+}
+
+
+.detection-data strong {
+    display: block;
+
+    font-size: 0.95rem;
+
+    word-break: break-word;
+}
+
+
+/* EMPTY / ERROR */
+
+.empty-result {
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-medium);
+
+    padding: 35px;
+
+    text-align: center;
+}
+
+
+.empty-result h2 {
+    margin-bottom: 10px;
+}
+
+
+.empty-result p {
+    color: var(--text-secondary);
+
+    line-height: 1.7;
+
+    margin-bottom: 20px;
+}
+
+
+.empty-result button {
+    border: none;
+
+    border-radius: 999px;
+
+    padding: 12px 20px;
+
+    background: var(--text-primary);
+
+    color: white;
+
+    cursor: pointer;
+
+    font: inherit;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .details-navbar,
+    .details-workspace {
+        width: min(
+            calc(100% - 32px),
+            1180px
+        );
+    }
+
+
+    .details-heading h1 {
+        font-size: 3.2rem;
+    }
+
+
+    .result-panel {
+        padding: 18px;
+    }
+
+
+    .detection-card {
+        padding: 18px;
+    }
+
+}
