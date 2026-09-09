@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Scan | VisionSphere AI</title>
+
+    <link
+        rel="stylesheet"
+        href="../CSS/style.css"
+    >
+</head>
+
+
+<body class="scanner-body">
+
+    <main class="scanner-page">
+
+
+        <!-- Navigation -->
+        <header class="scanner-navbar">
+
+            <a
+                href="index.html"
+                class="brand"
+            >
+
+                <div class="brand-icon">
+                    <span></span>
+                </div>
+
+                <span class="brand-name">
+                    VisionSphere
+                </span>
+
+            </a>
+
+
+            <div class="scanner-nav-center">
+
+                <span class="scanner-mode-dot"></span>
+
+                <span>
+                    OBJECT ANALYSIS MODE
+                </span>
+
+            </div>
+
+
+            <a
+                href="index.html"
+                class="back-home"
+            >
+                ← Back Home
+            </a>
+
+        </header>
+
+
+        <!-- Main Scanner -->
+        <section class="scanner-workspace">
+
+
+            <!-- Heading -->
+            <div class="scanner-heading">
+
+                <span class="section-eyebrow">
+                    VISUAL INPUT
+                </span>
+
+                <h1>
+                    Scan your
+                    <span>environment.</span>
+                </h1>
+
+                <p>
+                    Upload an image or use your camera. VisionSphere will
+                    analyse the visual input and identify objects and their
+                    spatial information.
+                </p>
+
+            </div>
+
+
+            <!-- Scanner Panel -->
+            <section class="scan-panel">
+
+
+                <!-- Empty Preview -->
+                <div
+                    class="scan-preview"
+                    id="scanPreview"
+                >
+
+                    <div class="preview-grid"></div>
+
+                    <div class="scanner-corners">
+
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+
+                    </div>
+
+
+                    <div
+                        class="scan-placeholder"
+                        id="scanPlaceholder"
+                    >
+
+                        <div class="scan-icon">
+
+                            <div class="scan-icon-inner"></div>
+
+                        </div>
+
+
+                        <h2>
+                            Ready to analyse
+                        </h2>
+
+                        <p>
+                            Upload a real-world image or activate
+                            your camera to begin scanning.
+                        </p>
+
+                    </div>
+
+
+                    <!-- Uploaded Image -->
+                    <img
+                        id="previewImage"
+                        alt="Uploaded scan preview"
+                        hidden
+                    >
+
+
+                    <!-- Camera -->
+                    <video
+                        id="cameraFeed"
+                        autoplay
+                        playsinline
+                        hidden
+                    ></video>
+
+
+                    <!-- Scan Overlay -->
+                    <div
+                        class="scan-overlay"
+                        id="scanOverlay"
+                        hidden
+                    >
+
+                        <div class="scanning-line"></div>
+
+                        <span>
+                            ANALYSING VISUAL DATA
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- Scanner Controls -->
+                <div class="scan-controls">
+
+
+                    <!-- Upload -->
+                    <label
+                        for="imageInput"
+                        class="control-button secondary-control"
+                    >
+
+                        <span class="control-icon">
+                            ↑
+                        </span>
+
+                        Upload Image
+
+                    </label>
+
+
+                    <input
+                        type="file"
+                        id="imageInput"
+                        accept="image/*"
+                        hidden
+                    >
+
+
+                    <!-- Camera -->
+                    <button
+                        type="button"
+                        class="control-button secondary-control"
+                        id="cameraButton"
+                    >
+
+                        <span class="control-icon">
+                            ◉
+                        </span>
+
+                        Use Camera
+
+                    </button>
+
+
+                    <!-- Analyse -->
+                    <button
+                        type="button"
+                        class="analyse-button"
+                        id="analyseButton"
+                        disabled
+                    >
+
+                        <span>
+                            Analyse Scene
+                        </span>
+
+                        <span>
+                            →
+                        </span>
+
+                    </button>
+
+
+                </div>
+
+
+                <!-- Status -->
+                <div
+                    class="scan-status"
+                    id="scanStatus"
+                >
+
+                    <span class="status-pulse"></span>
+
+                    <span>
+                        Waiting for visual input
+                    </span>
+
+                </div>
+
+
+            </section>
+
+
+            <!-- Small info row -->
+            <div class="scanner-info">
+
+                <div>
+                    <span>INPUT</span>
+                    <strong>IMAGE / CAMERA</strong>
+                </div>
+
+                <div>
+                    <span>ENGINE</span>
+                    <strong>YOLO</strong>
+                </div>
+
+                <div>
+                    <span>ANALYSIS</span>
+                    <strong>SPATIAL VISION</strong>
+                </div>
+
+                <div>
+                    <span>STORAGE</span>
+                    <strong>MONGODB</strong>
+                </div>
+
+            </div>
+
+
+        </section>
+
+    </main>
+
+
+    <script src="../Javascript/app.js"></script>
+<script src="../Javascript/scanner.js"></script>
+</body>
+
+</html>

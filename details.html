@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="VisionSphere AI scan results"
+    >
+
+    <title>
+        VisionSphere | Scan Results
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="../CSS/style.css"
+    >
+
+</head>
+
+
+<body class="details-body">
+
+    <main class="details-page">
+
+
+        <!-- Navigation -->
+
+        <header class="details-navbar">
+
+            <a
+                href="index.html"
+                class="brand"
+            >
+
+                <div class="brand-icon">
+                    <span></span>
+                </div>
+
+                <span class="brand-name">
+                    VisionSphere
+                </span>
+
+            </a>
+
+
+            <a
+                href="scanner.html"
+                class="back-home"
+            >
+                ← New Scan
+            </a>
+
+        </header>
+
+
+        <!-- Results -->
+
+        <section class="details-workspace">
+
+
+            <div class="details-heading">
+
+                <span class="section-eyebrow">
+                    ANALYSIS COMPLETE
+                </span>
+
+                <h1>
+                    Scan
+                    <span>results.</span>
+                </h1>
+
+                <p id="scanSummary">
+                    Loading analysis...
+                </p>
+
+            </div>
+
+
+            <!-- Result Image -->
+
+            <section class="result-panel">
+
+                <div class="result-panel-header">
+
+                    <div>
+
+                        <span class="section-eyebrow">
+                            DETECTION OUTPUT
+                        </span>
+
+                        <h2>
+                            Visual analysis
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="result-image-container">
+
+                    <img
+                        id="resultImage"
+                        alt="VisionSphere AI detection result"
+                        hidden
+                    >
+
+                </div>
+
+            </section>
+
+
+            <!-- Detection Results -->
+
+            <section class="detections-section">
+
+                <div class="section-heading">
+
+                    <span class="section-eyebrow">
+                        OBJECT DATA
+                    </span>
+
+                    <h2>
+                        Detected objects
+                    </h2>
+
+                </div>
+
+
+                <div
+                    id="detectionsContainer"
+                    class="detections-container"
+                >
+                </div>
+
+            </section>
+
+
+        </section>
+
+    </main>
+
+
+    <script src="../Javascript/details.js"></script>
+
+</body>
+
+</html>
