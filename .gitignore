@@ -1,0 +1,17 @@
+# model weights
+*.pth
+
+# python cache
+__pycache__/
+*.pyc
+
+# training outputs
+output/
+checkpoints/
+
+# dataset
+dataset/
+
+# examples
+assets/examples/
+assets/examples_video/
