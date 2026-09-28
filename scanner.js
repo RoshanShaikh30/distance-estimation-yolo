@@ -243,7 +243,7 @@ if (analyseButton) {
 
 
                 const response = await fetch(
-                    `${API_BASE_URL}/api/scan/image`,
+                    `${API_BASE_URL}/detect`,
                     {
                         method: "POST",
                         body: formData
