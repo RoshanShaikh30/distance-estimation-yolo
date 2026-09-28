@@ -2,6 +2,20 @@ import cv2
 import torch
 import numpy as np
 
+import sys
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent
+
+sys.path.append(
+    str(
+        BASE_DIR.parent /
+        "depth-models" /
+        "Depth-Anything-V2" /
+        "metric_depth"
+    )
+)
+
 from ultralytics import YOLO
 from depth_anything_v2.dpt import DepthAnythingV2
 
@@ -10,7 +24,7 @@ DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
 # YOLO
 print("Loading YOLO...")
-yolo = YOLO("../../../yolov8s.pt")
+yolo = YOLO(str(BASE_DIR.parent / "yolov8s.pt"))
 
 # DEPTH ANYTHING V2 METRIC
 
@@ -28,11 +42,17 @@ depth_model = DepthAnythingV2(
     **model_configs['vitb'],
     max_depth=20
 )
-
+checkpoint_path = (
+    BASE_DIR.parent /
+    "depth-models" /
+    "Depth-Anything-V2" /
+    "metric_depth" /
+    "checkpoints" /
+    "depth_anything_v2_metric_hypersim_vitb.pth"
+)
 depth_model.load_state_dict(
     torch.load(
-        "checkpoints/depth_anything_v2_metric_hypersim_vitb.pth",
-        map_location=DEVICE
+        checkpoint_path,map_location=DEVICE
     )
 )
 
