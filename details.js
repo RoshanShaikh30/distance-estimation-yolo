@@ -1,7 +1,7 @@
 const API_BASE_URL = "http://127.0.0.1:8000";
 
 const scanSummary = document.getElementById("scanSummary");
-const resultImage = document.getElementById("resultImage");
+// const resultImage = document.getElementById("resultImage");
 const detectionsContainer = document.getElementById("detectionsContainer");
 
 
@@ -24,7 +24,9 @@ function loadScanResult() {
 
         const result = JSON.parse(savedResult);
 
+
         console.log("SCAN RESULT:", result);
+        alert("Loaded " + result.detections.length + " detections");
 
 
         // Check whether scan succeeded
@@ -36,18 +38,18 @@ function loadScanResult() {
 
 
         // Display annotated result image
-        if (resultImage && result.result_image) {
+        // if (resultImage && result.result_image) {
 
-            resultImage.src =
-                API_BASE_URL + result.result_image;
+        //     resultImage.src =
+        //         API_BASE_URL + result.result_image;
 
-            resultImage.style.display = "block";
+        //     resultImage.style.display = "block";
 
-            console.log(
-                "RESULT IMAGE:",
-                resultImage.src
-            );
-        }
+        //     console.log(
+        //         "RESULT IMAGE:",
+        //         resultImage.src
+        //     );
+        // }
 
 
         // Get detections
@@ -117,49 +119,30 @@ function loadScanResult() {
                 detection.name ||
                 "Unknown object";
 
-
-            const confidence =
-                detection.confidence_percentage ??
-                detection.confidence ??
-                "N/A";
-
-
-            const width =
-                detection.image_dimensions?.width_px ??
-                detection.width_pixels ??
-                "N/A";
-
-
-            const height =
-                detection.image_dimensions?.height_px ??
-                detection.height_pixels ??
-                "N/A";
-
+            const distance =
+                detection.distance !== undefined
+                ? detection.distance.toFixed(2)
+                : "N/A";
 
             const centerX =
-                detection.center_position?.x ??
-                "N/A";
-
+                detection.cx ?? "N/A";
 
             const centerY =
-                detection.center_position?.y ??
-                "N/A";
+                detection.cy ?? "N/A";
 
+            const x1 =
+                detection.x1 ?? "N/A";
 
-            const orientation =
-                detection.visual_traits?.orientation ??
-                "N/A";
+            const y1 =
+                detection.y1 ?? "N/A";
 
+            const x2 =
+                detection.x2 ?? "N/A";
 
-            const scenePresence =
-                detection.visual_traits?.scene_presence ??
-                "N/A";
+            const y2 =
+                detection.y2 ?? "N/A";
 
-
-            const areaPercentage =
-                detection.visual_traits?.area_percentage ??
-                "N/A";
-
+            console.log("CURRENT DETECTION:", detection);
 
             const card = document.createElement("div");
 
@@ -167,48 +150,29 @@ function loadScanResult() {
 
 
             card.innerHTML = `
-                <h2>
-                    Object ${index + 1}: ${objectName}
-                </h2>
+             <h2>
+              ${objectName}
+             </h2>
 
-                <p>
-                    <strong>Confidence:</strong>
-                    ${confidence}%
-                </p>
+            <p>
+             <strong>Distance:</strong>
+             ${distance} m
+            </p>
 
-                <p>
-                    <strong>Width:</strong>
-                    ${width}px
-                </p>
+            <p>
+              <strong>Center Position:</strong>
+              (${centerX}, ${centerY})
+            </p>
 
-                <p>
-                    <strong>Height:</strong>
-                    ${height}px
-                </p>
-
-                <p>
-                    <strong>Position:</strong>
-                    ${centerX}, ${centerY}
-                </p>
-
-                <p>
-                    <strong>Orientation:</strong>
-                    ${orientation}
-                </p>
-
-                <p>
-                    <strong>Scene Presence:</strong>
-                    ${scenePresence}
-                </p>
-
-                <p>
-                    <strong>Image Coverage:</strong>
-                    ${areaPercentage}%
-                </p>
-            `;
+            <p>
+              <strong>Bounding Box:</strong>
+              (${x1}, ${y1}) → (${x2}, ${y2})
+            </p>
+          `;
 
 
             detectionsContainer.appendChild(card);
+            console.log("CARD ADDED");
 
         });
 
